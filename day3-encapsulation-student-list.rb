@@ -43,7 +43,15 @@ class StudentList #this is the blue print of the class we haven't BUILT yet!
   end
 
   def view_students
-    return @students
+    @students
+  end
+
+  def sort!
+    @students.sort! {|x, y| x.get_name[1] <=> y.get_name[1] }
+  end
+
+  def sort
+    @students.sort {|x, y| x.get_name[1] <=> y.get_name[1] }
   end
 
 end
@@ -70,6 +78,10 @@ class Student
     [@first_name, @last_name]
   end
 
+  def to_s
+    "#{@first_name} #{@last_name}"
+  end
+
 end
 
 ruben = Student.new("Ruben", "Kos")
@@ -80,17 +92,24 @@ dario = Student.new("Dario", "DA")
 march_list.add(ruben)
 march_list.add(dario)
 
-march_list.view_students.each {|x| puts x.get_name}
 
-march_list
+march_list.sort!
+puts march_list.view_students
 
+sorted_students = march_list.sort
+puts sorted_students.inspect
 
+puts march_list.sort.inspect
+# puts dario.get_name[1]
 
+# march_list.view_students.each {|x| puts x.get_name}
 
+# puts march_list.view_students.sort {|x, y| x.get_name[1] <=> y.get_name[1] }
 
+# Move the method inside the class
+# sorted_students = march_list.view_students.sort {|x, y| x.get_name[1] <=> y.get_name[1] }
 
-
-
+# sorted_students.each {|x| puts "#{x.get_name.first} #{x.get_name.last}" }
 
 
 # puts march_list.view_students
