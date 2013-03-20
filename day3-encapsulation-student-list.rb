@@ -43,20 +43,51 @@ class StudentList #this is the blue print of the class we haven't BUILT yet!
   end
 
   def view_students
-    @students
+    return @students
   end
 
 end
 
 march_list = StudentList.new("March Cohort") #this is the process of INSTANTIATION, of building the class for it to now be useful. Process of creating an instance of our student list. This is created in a memory but it's not pointing to anywhere which is why we need to add a variable
 
-puts march_list.view_cohort_name #calling the local method inside the instance variable of the class
+# puts march_list.view_cohort_name #calling the local method inside the instance variable of the class
 
-march_list.add("Dario")
-march_list.add("Zahid")
-march_list.add("Ben")
-march_list.remove("Dario")
-puts march_list.view_students
+# march_list.add("Dario")
+# march_list.add("Zahid")
+# march_list.add("Ben")
+# march_list.remove("Dario")
+# puts march_list.view_students
+
+
+class Student
+
+  def initialize(first_name, last_name)
+    @first_name = first_name
+    @last_name = last_name
+  end
+
+  def get_name
+    [@first_name, @last_name]
+  end
+
+end
+
+ruben = Student.new("Ruben", "Kos")
+dario = Student.new("Dario", "DA")
+
+# puts ruben.get_name
+
+march_list.add(ruben)
+march_list.add(dario)
+
+march_list.view_students.each {|x| puts x.get_name}
+
+march_list
+
+
+
+
+
 
 
 
